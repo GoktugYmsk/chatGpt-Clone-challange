@@ -12,8 +12,8 @@ function Content() {
         event.preventDefault();
         const message = inputValue;
         if (message.trim() !== '') {
-            addUserMessage(` ${getUserName || ' tanımsız'} - ${message}`);
-            addBotMessage(`Bot: Thanks for your message, ${getUserName || 'User'}!`);
+            addUserMessage(` ${getUserName || ' Giriş yapmayan kullanıcı'} - ${message}`);
+            addBotMessage(`Bot: Thanks for your message, ${getUserName || 'Giriş yapmayan kullanıcı'}!`);
             setInputValue('');
         }
     };
