@@ -7,6 +7,8 @@ function Header() {
     const [isLogin, setIslogin] = useState(false);
     const navigate = useNavigate();
 
+    const getUserName = sessionStorage.getItem('user');
+
 
     useEffect(() => {
         const getLogin = sessionStorage.getItem('user');
@@ -23,7 +25,10 @@ function Header() {
     return (
         <div className='container-header' >
             {(isLogin) ? (
-                <IoIosLogOut onClick={handleLogoutClick} className='icon' />
+                <div className='container-header__name' >
+                    <p>{getUserName}</p>
+                    <IoIosLogOut onClick={handleLogoutClick} className='icon' />
+                </div>
             ) : (
                 <p onClick={() => navigate('/login')} className='login-message' >Giriş Yap</p>
             )

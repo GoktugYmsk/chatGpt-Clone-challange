@@ -54,25 +54,25 @@ function Content() {
     return (
         <div className="content-container">
             <div className="content-container__chat">
-                <div className="content-container__chat__area">
+                <div className="content-container__chat__area messages">
                     {messages.map((message, index) => (
                         <div key={index} className={`message ${message.sender}-message ${message.animation}`}>
                             {message.text}
                         </div>
                     ))}
                 </div>
-                <div className="content-container__input-area">
-                    <input
-                        type="text"
-                        value={inputValue}
-                        placeholder="Type your message..."
-                        onKeyDown={handleKeyDown}
-                        onChange={(e) => setInputValue(e.target.value)}
-                    />
-                    <button onClick={sendMessage}>
-                        <FaArrowUp />
-                    </button>
-                </div>
+            </div>
+            <div className="content-container__input-area">
+                <input
+                    type="text"
+                    value={inputValue}
+                    placeholder="Type your message..."
+                    onKeyDown={handleKeyDown}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <button className='send-button' onClick={sendMessage}>
+                    <FaArrowUp />
+                </button>
             </div>
         </div>
     );

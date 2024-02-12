@@ -1,142 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    margin: 0 10px;
+    max-width: 100px;
+    height: auto;
+}
+
 .content-container {
     display: flex;
-    background-color: rgb(30, 29, 29);
-    height: 94vh;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    height: 94vh;
+}
 
-    .content-container__chat__area {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        flex-direction: column;
-        overflow: scroll;
-        width: 100%;
+.messages {
+    padding: 10px;
+    border-radius: 10px;
+}
 
+.message {
+    margin-bottom: 10px;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: #fff;
+    text-align: right;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bot-message {
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: left;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.content-container__chat {
+    width: 90%;
+    max-width: 800px;
+    height: 60vh;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+
+}
+
+.content-container__input-area {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+
+    input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px 0 0 5px;
+        margin-right: 10px;
+        box-sizing: border-box;
+        max-width: calc(100% - 90px);
+    }
+}
+
+.send-button {
+    padding: 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 80px;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
     }
 
-    .content-container__chat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        width: 90%;
-        max-width: 800px;
-        height: 60vh;
-        margin: 20px auto;
-        background-color: rgb(13, 13, 13);
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        overflow: auto;
-
-        @media screen and (max-width: 400px) {
-            .content-container__chat {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-end;
-            }
-        }
-
-        .messages {
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .message {
-            margin-bottom: 10px;
-        }
-
-        .user-message {
-            background-color: rgb(128, 128, 128);
-            color: #fff;
-            text-align: right;
-            padding: 10px;
-            border-radius: 10px;
-            width: 90%;
-        }
-
-        .bot-message {
-            background-color: rgb(42, 41, 41);
-            color: rgb(122, 122, 122);
-            text-align: left;
-            padding: 10px;
-            border-radius: 10px;
-            width: 90%;
-        }
-
-        .content-container__input-area {
-            display: flex;
-            align-items: center;
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgb(42, 41, 41);
-            border-radius: 20px;
-
-            @media screen and (max-width: 400px) {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 85%;
-
-                .content-container__input-area {
-
-                    button {
-                        width: 50px;
-                    }
-
-                }
-            }
-        }
-
-        input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: rgb(42, 41, 41);
-            border-radius: 5px 0 0 5px;
-            margin-right: 10px;
-            box-sizing: border-box;
-            max-width: calc(100% - 90px);
-            color: white;
-        }
-
-        button {
-            padding: 10px;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            background-color: rgb(22, 20, 20);
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 80px;
-        }
-
-        @media screen and (max-width: 400px) {
-            button {
-                width: 60px;
-            }
-        }
-
-        button:hover {
-            background-color: rgb(58, 52, 52);
-        }
-
-        @keyframes popIn {
-            0% {
-                transform: scale(0);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .pop-in {
-            animation: popIn 0.3s ease;
-        }
+    100% {
+        transform: scale(1);
     }
+}
 
+.pop-in {
+    animation: popIn 0.3s ease;
 }
