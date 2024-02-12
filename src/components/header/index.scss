@@ -1,0 +1,50 @@
+.container-header {
+    display: flex;
+    background-color: rgb(30, 29, 29);
+    height: 6vh;
+
+    .icon {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: white;
+        font-size: 50px;
+        cursor: pointer;
+
+    }
+
+    @media screen and (max-width: 400px) {
+        .icon {
+            font-size: 30px;
+        }
+    }
+
+
+    .login-message {
+        position: absolute;
+        right: 30px;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+
+    }
+
+    @media screen and (max-width: 400px) {
+
+        .login-message {
+            display: flex;
+            position: absolute;
+            top: 0;
+            right: 10px;
+            font-size: 20px;
+
+            p {
+                position: relative;
+                top: 0;
+                right: 0;
+                font-size: 2px;
+                background: red;
+            }
+        }
+    }
+}

@@ -2,29 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 import './index.scss';
 
-function Chatbot() {
+function Content() {
     const [messages, setMessages] = useState([]);
-    const [inputValue, setInputValue] = useState(null);
+    const [inputValue, setInputValue] = useState('');
 
-    console.log('messages', messages);
+    const getUserName = sessionStorage.getItem('user');
 
     const sendMessage = (event) => {
         event.preventDefault();
         const message = inputValue;
         if (message.trim() !== '') {
-            addUserMessage(message);
-            addBotMessage('Bot: Thanks for your message!');
+            addUserMessage(` ${getUserName || ' tanımsız'} - ${message}`);
+            addBotMessage(`Bot: Thanks for your message, ${getUserName || 'User'}!`);
             setInputValue('');
         }
     };
-
 
     const addUserMessage = (message) => {
         setMessages((prevMessages) => [...prevMessages, { text: message, sender: 'user' }]);
     };
 
     const addBotMessage = (message) => {
-        setMessages((prevMessages) => [...prevMessages, { text: message, sender: 'bot', animation: 'pop-in' }]);
+        setMessages((prevMessages) => [
+            ...prevMessages,
+            { text: message, sender: 'bot', animation: 'pop-in' },
+        ]);
     };
 
     const handleKeyDown = (event) => {
@@ -39,6 +41,10 @@ function Chatbot() {
                 setMessages((prevMessages) => {
                     const newMessages = [...prevMessages];
                     newMessages[newMessages.length - 1].animation = '';
+
+                    const chatArea = document.querySelector(".content-container__chat__area");
+                    chatArea.scrollTop = chatArea.scrollHeight;
+
                     return newMessages;
                 });
             }, 2000);
@@ -48,12 +54,14 @@ function Chatbot() {
     return (
         <div className="content-container">
             <div className="content-container__chat">
-                {messages.map((message, index) => (
-                    <div key={index} className={`message ${message.sender}-message ${message.animation}`}>
-                        {message.text}
-                    </div>
-                ))}
-                <div className="input-container">
+                <div className="content-container__chat__area">
+                    {messages.map((message, index) => (
+                        <div key={index} className={`message ${message.sender}-message ${message.animation}`}>
+                            {message.text}
+                        </div>
+                    ))}
+                </div>
+                <div className="content-container__input-area">
                     <input
                         type="text"
                         value={inputValue}
@@ -70,4 +78,4 @@ function Chatbot() {
     );
 }
 
-export default Chatbot;
+export default Content;
