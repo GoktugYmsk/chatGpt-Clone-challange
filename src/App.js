@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './components/layout';
@@ -6,6 +7,9 @@ import Login from './components/login';
 function App() {
   return (
     <div className="App">
+      <Helmet>
+        <title>AI Copy Challange</title>
+      </Helmet>
       <Routes>
         <Route path="/" element={<Layout />} />
         <Route path="/login" element={<Login />} />
