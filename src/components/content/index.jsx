@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FaArrowUp } from 'react-icons/fa';
+
+import ContentAlt from './contentAlt';
+import ContentTop from './contentTop';
+
 import './index.scss';
 
 function Content() {
@@ -29,12 +32,6 @@ function Content() {
         ]);
     };
 
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            sendMessage(event);
-        }
-    };
-
     useEffect(() => {
         if (messages.length > 0 && messages[messages.length - 1].sender === 'bot') {
             setTimeout(() => {
@@ -53,27 +50,8 @@ function Content() {
 
     return (
         <div className="content-container">
-            <div className="content-container__chat">
-                <div className="content-container__chat__area messages">
-                    {messages.map((message, index) => (
-                        <div key={index} className={`message ${message.sender}-message ${message.animation}`}>
-                            {message.text}
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div className="content-container__input-area">
-                <input
-                    type="text"
-                    value={inputValue}
-                    placeholder="Type your message..."
-                    onKeyDown={handleKeyDown}
-                    onChange={(e) => setInputValue(e.target.value)}
-                />
-                <button className='send-button' onClick={sendMessage}>
-                    <FaArrowUp />
-                </button>
-            </div>
+            <ContentTop messages={messages} />
+            <ContentAlt inputValue={inputValue} setInputValue={setInputValue} sendMessage={sendMessage} />
         </div>
     );
 }

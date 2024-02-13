@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { IoIosLogOut } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+
+import { IoIosLogOut } from 'react-icons/io';
+
 import './index.scss'
 
 function Header() {

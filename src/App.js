@@ -1,8 +1,10 @@
 import { Helmet } from 'react-helmet';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
+
 import Layout from './components/layout';
 import Login from './components/login';
+
+import './App.css';
 
 function App() {
   return (
